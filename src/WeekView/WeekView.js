@@ -132,7 +132,7 @@ export default class WeekView extends Component {
               ))}
             </View>
             <ScrollView
-              horizontal
+              scrollEnabled={false}
               pagingEnabled
               automaticallyAdjustContentInsets={false}
               onMomentumScrollEnd={this.scrollEnded}

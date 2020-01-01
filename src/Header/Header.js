@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import { Text, View } from "react-native";
+import moment from "moment";
 
-import { getFormattedDate, getCurrentMonth } from '../utils';
+import { getFormattedDate, getCurrentMonth } from "../utils";
 
-import styles from './Header.styles';
+import styles from "./Header.styles";
 
 const getColumns = (numberOfDays, selectedDate) => {
   const columns = [];
@@ -14,15 +14,15 @@ const getColumns = (numberOfDays, selectedDate) => {
     initial = 1;
     initial -= moment().isoWeekday();
   }
-  for (let i = initial; i < (numberOfDays + initial); i += 1) {
+  for (let i = initial; i < numberOfDays + initial; i += 1) {
     let date = moment(selectedDate);
-    date = date.add(i, 'd');
+    date = date.add(i, "d");
     columns.push(date.toDate());
   }
   return columns;
 };
 
-const getFontSizeHeader = (numberOfDays) => {
+const getFontSizeHeader = numberOfDays => {
   if (numberOfDays > 1) {
     return 12;
   }
@@ -30,20 +30,20 @@ const getFontSizeHeader = (numberOfDays) => {
   return 16;
 };
 
-const getDayTextStyles = (numberOfDays) => {
+const getDayTextStyles = numberOfDays => {
   const fontSize = numberOfDays === 7 ? 12 : 14;
   return {
-    fontSize,
+    fontSize
   };
 };
 
-const Column = ({
-  column, numberOfDays, format,
-}) => {
+const Column = ({ column, numberOfDays, format }) => {
   return (
     <View style={styles.column}>
       <Text style={[styles.text, getDayTextStyles(numberOfDays)]}>
-        {getFormattedDate(column, format)}
+        {getFormattedDate(column, "DD")}
+        {"\n"}
+        {getFormattedDate(column, "dddd")}
       </Text>
     </View>
   );
@@ -52,7 +52,7 @@ const Column = ({
 const Columns = ({ columns, numberOfDays, format }) => {
   return (
     <View style={styles.columns}>
-      {columns.map((column) => {
+      {columns.map(column => {
         return (
           <Column
             key={column}
@@ -66,26 +66,40 @@ const Columns = ({ columns, numberOfDays, format }) => {
   );
 };
 
-const Title = ({ numberOfDays, selectedDate }) => { // eslint-disable-line react/prop-types
+const Title = ({ numberOfDays, selectedDate }) => {
+  // eslint-disable-line react/prop-types
   return (
     <View style={styles.title}>
-      <Text
+      {/* <Text
         style={[styles.text, { fontSize: getFontSizeHeader(numberOfDays) }]}
       >
         {getCurrentMonth(selectedDate)}
-      </Text>
+      </Text> */}
     </View>
   );
 };
 
-const WeekViewHeader = ({
-  numberOfDays, selectedDate, formatDate, style,
-}) => {
+const WeekViewHeader = ({ numberOfDays, selectedDate, formatDate, style }) => {
   const columns = getColumns(numberOfDays, selectedDate);
   return (
-    <View style={[styles.container, style]}>
-      <Title numberOfDays={numberOfDays} selectedDate={selectedDate} />
-      {columns && <Columns format={formatDate} columns={columns} numberOfDays={numberOfDays} />}
+    <View style={{ height: "100%", width: "100%", paddingHorizontal: 20 }}>
+      <View style={{ flexDirection: "row" }}>
+        {/* <FontAwesome5 name="bars" /> */}
+        <Text style={[styles.text, { fontSize: 12, textAlign: "left" }]}>
+          {moment(selectedDate).format("MMMM")}
+          {/* {getCurrentMonth(selectedDate)} */}
+        </Text>
+      </View>
+      <View style={[styles.container]}>
+        <Title numberOfDays={numberOfDays} selectedDate={selectedDate} />
+        {columns && (
+          <Columns
+            format={formatDate}
+            columns={columns}
+            numberOfDays={numberOfDays}
+          />
+        )}
+      </View>
     </View>
   );
 };
@@ -94,11 +108,11 @@ WeekViewHeader.propTypes = {
   numberOfDays: PropTypes.oneOf([1, 3, 7]).isRequired,
   selectedDate: PropTypes.instanceOf(Date).isRequired,
   formatDate: PropTypes.string,
-  style: PropTypes.object,
+  style: PropTypes.object
 };
 
 WeekViewHeader.defaultProps = {
-  formatDate: 'MMM D',
+  formatDate: "MMM D"
 };
 
 export default WeekViewHeader;
