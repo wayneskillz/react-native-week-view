@@ -84,10 +84,8 @@ const WeekViewHeader = ({ numberOfDays, selectedDate, formatDate, style }) => {
   return (
     <View style={{ height: "100%", width: "100%", paddingHorizontal: 20 }}>
       <View style={{ flexDirection: "row" }}>
-        {/* <FontAwesome5 name="bars" /> */}
         <Text style={[styles.text, { fontSize: 12, textAlign: "left" }]}>
           {moment(selectedDate).format("MMMM")}
-          {/* {getCurrentMonth(selectedDate)} */}
         </Text>
       </View>
       <View style={[styles.container]}>
