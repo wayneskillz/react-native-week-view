@@ -1,33 +1,34 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between"
   },
   title: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: 60,
-    borderColor: '#fff',
-    borderTopWidth: 1,
+    borderColor: "#fff",
+    borderTopWidth: 1
   },
   columns: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   column: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: '#fff',
+    alignItems: "center",
+    justifyContent: "center",
+    borderColor: "#fff",
     borderTopWidth: 1,
-    borderLeftWidth: 1,
+    borderLeftWidth: 1
   },
   text: {
-    color: '#fff',
-  },
+    color: "#000000",
+    textAlign: "center"
+  }
 });
 
 export default styles;
