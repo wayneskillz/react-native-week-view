@@ -82,10 +82,12 @@ const Title = ({ numberOfDays, selectedDate }) => {
 const WeekViewHeader = ({ numberOfDays, selectedDate, formatDate, style }) => {
   const columns = getColumns(numberOfDays, selectedDate);
   return (
-    <View style={{ height: "100%", width: "100%", paddingHorizontal: 20 }}>
+    <View style={{ height: "100%", width: "100%", paddingHorizontal: 15 }}>
       <View style={{ flexDirection: "row" }}>
         <Text style={[styles.text, { fontSize: 12, textAlign: "left" }]}>
           {moment(selectedDate).format("MMMM")}
+          {"\n"}
+          {moment(selectedDate).format("YYYY")}
         </Text>
       </View>
       <View style={[styles.container]}>

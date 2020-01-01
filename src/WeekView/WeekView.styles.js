@@ -1,29 +1,29 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   scrollViewContent: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   header: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 70,
+    justifyContent: "center",
+    alignItems: "center"
   },
   timeLabel: {
     flex: -1,
-    height: 40,
+    height: 40
   },
   timeText: {
     fontSize: 12,
-    textAlign: 'center',
+    textAlign: "center"
   },
   timeColumn: {
     paddingTop: 10,
-    width: 60,
-  },
+    width: 60
+  }
 });
 
 export default styles;
