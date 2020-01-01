@@ -41,9 +41,9 @@ const Column = ({ column, numberOfDays, format }) => {
   return (
     <View style={styles.column}>
       <Text style={[styles.text, getDayTextStyles(numberOfDays)]}>
-        {getFormattedDate(column, "DD")}
+        {getFormattedDate(column, "ddd")}
         {"\n"}
-        {getFormattedDate(column, "dddd")}
+        {getFormattedDate(column, "DD")}
       </Text>
     </View>
   );
