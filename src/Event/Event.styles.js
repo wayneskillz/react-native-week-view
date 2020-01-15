@@ -7,12 +7,15 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 2,
     borderRadius: 5,
-    flex: 1
+    marginRight: 1,
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: "wrap"
   },
   description: {
     color: "#fff",
     textAlign: "left",
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "bold",
     fontFamily: "SFProDisplay-Bold",
     padding: 5
